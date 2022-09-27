@@ -40,7 +40,13 @@ Shader "Unlit/NewCelShader"
             v2f vert (appdata v)
             {
                 v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
+
+                float4 pos = mul(UNITY_MATRIX_M, v.vertex); 
+                // deform x coord according to time and y coord in world space
+                pos.x = pos.x + sin(_Time.y + pos.y * 5.0) * .25; 
+
+                
+                o.vertex = UnityObjectToClipPos(pos);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 UNITY_TRANSFER_FOG(o,o.vertex);
                 o.normal = mul((float3x3)UNITY_MATRIX_M, v.normal);
