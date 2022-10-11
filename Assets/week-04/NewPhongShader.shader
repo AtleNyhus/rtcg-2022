@@ -4,15 +4,13 @@ Shader "Unlit/NewPhongShader"
     {
         _MainTex ("Texture", 2D) = "white" {}
         // NEW we now have some custom properties
-        _AmbientColor("Ambient Color", Color) = (1,1,1,1)
-        _AmbientIntensity("Ambient intensity", Range(0,1)) = 0.1
-        _DiffuseIntensity("Diffuse intensity", Range(0,1)) = 0.5
+        _Ia("Ambient Color", Color) = (1,1,1,1)
+        _Ka("Ambient reflection", Range(0,1)) = 0.1 // Ka
+        _Kd("Diffuse reflection", Range(0,1)) = 0.5 // Kd
         // TODO add the 'Specular intensity' and the 'Specular exponent' properties 
-        _SpecularExponent("Specular Exponent", range(0,100)) = 2
-        _SpecularIntensity("Specular Intensity", range(0,1)) = 0.5
-        _SpecularColor("Specular Color", Color) = (1,1,1,1)
         // use the properties above as a reference
-
+        _Ks("Specular reflection", Range(0,5)) = 0.5 // Kd
+        _exp("exponent", Range(1,50)) = 0.5 // Kd
     }
     SubShader
     {
@@ -51,14 +49,13 @@ Shader "Unlit/NewPhongShader"
 
             sampler2D _MainTex;
             // NEW we declare the properties as variables here
-            float4 _AmbientColor;
-            float _AmbientIntensity;
-            float _DiffuseIntensity;
-            // TODO add variables for 'Specular intensity' and the 'Specular exponent' properties
-            float4 _SpecularColor;
-            float _SpecularExponent;
-            float _SpecularIntensity;
+            float4 _Ia;
+            float _Ka;
+            float _Kd;
+            // TODO add variables for 'Specular intensity' and the 'Specular exponent' properties 
             // remember that names must match, use the variables above as a reference
+            float _Ks;
+            float _exp;
 
             float4 _MainTex_ST;
 
@@ -88,14 +85,15 @@ Shader "Unlit/NewPhongShader"
                 float4 color = tex2D(_MainTex, i.uv);
                 
                 // diffuse contribution of the light, 'max' ensures it is not negative
-                float diffuse = _DiffuseIntensity * max(0, dot(normal, lightDirection));
+                float diffuse = _Kd * max(0, dot(normal, lightDirection));
                 
                 // TODO compute the specular contribution, 
                 // you will need to compute the half vector
                 // you will need the 'pow' (power), 'dot', and 'max' functions.
                 // search the hlsl decomentation to learn how to use it if necessary
+                float3 halfVector = normalize(view + lightDirection);
+                float specular = _Ks * pow(max(0, dot(halfVector, normal)), _exp);
 
-                float specular = _SpecularIntensity * _SpecularColor *  pow(max(0, dot(normal, normalize(lightDirection + view))), _SpecularExponent);
 
 
                 // we create our return variable, the final fragment color
@@ -104,7 +102,10 @@ Shader "Unlit/NewPhongShader"
                 // combine color and intensity to create the lighting effect, currently we only have diffuse lighting
                 // TODO add the ambient contribution
                 // TODO add the specular contribution        
-                outColor.rgb = diffuse * color.rgb * _LightColor0.rgb + color * _AmbientIntensity * _AmbientColor + specular;
+                outColor.rgb = 
+                    _Ka * _Ia * color.rgb + 
+                    diffuse * color.rgb * _LightColor0.rgb +
+                    specular * _LightColor0.rgb;
 
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, outColor);
