@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="324fc8cf-f207-40ff-b0bd-e626e511be97" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/week-03/NewCelMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/week-03/NewCelMaterial.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/week-03/NewCelShader.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/week-03/NewCelShader.shader" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/week-03/NewDiffuseMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/week-03/NewDiffuseMaterial.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/week-03/ShaderExamples.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/week-03/ShaderExamples.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.rtcg-2022/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.rtcg-2022/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/week-04/LightShaderExample.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/week-04/LightShaderExample.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/week-04/NewPhongMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/week-04/NewPhongMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/week-04/NewPhongShader.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/week-04/NewPhongShader.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +73,7 @@
       <updated>1663074791630</updated>
       <workItem from="1663074796814" duration="2503000" />
       <workItem from="1663676096009" duration="334000" />
+      <workItem from="1664282237465" duration="1665000" />
     </task>
     <servers />
   </component>
